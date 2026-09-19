@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "tours": "Passeios",
+    "guide": "Guia do Rio",
+    "about": "Sobre o Gabriel",
+    "faq": "Perguntas frequentes",
+    "contact": "Contato",
+    "menu": "Menu",
+    "close": "Fechar",
+    "language": "Idioma",
+    "skipToContent": "Ir para o conteúdo"
+  },
+  "cta": {
+    "bookOnWhatsapp": "Reservar pelo WhatsApp",
+    "messageGabriel": "Falar com o Gabriel",
+    "bookThisTour": "Reservar este passeio",
+    "seeAllTours": "Ver todos os passeios",
+    "viewTour": "Ver passeio",
+    "readMore": "Saiba mais"
+  },
+  "home": {
+    "heroTitle": "Passeios privativos e personalizados com um guia local no Rio de Janeiro",
+    "heroSubtitle": "Sem megafone, sem grupo de colete igual. Só eu te mostrando a minha cidade do jeito que eu mostraria a um amigo.",
+    "toursTitle": "Escolha o seu Rio",
+    "toursSubtitle": "Cada passeio é montado em volta do que você quer ver. Me conta o que te interessa e a gente planeja junto.",
+    "howItWorksTitle": "Como funciona",
+    "reviewsTitle": "O que dizem os visitantes"
+  },
+  "howItWorks": {
+    "step1Title": "Me manda mensagem",
+    "step1Body": "Manda um WhatsApp. Me diz quando você está no Rio, quem vem junto e o que você quer conhecer.",
+    "step2Title": "A gente planeja junto",
+    "step2Body": "Eu sugiro o que cabe nos seus dias, no seu ritmo e no seu orçamento. Nada é fixo — a gente molda tudo para você.",
+    "step3Title": "A gente se encontra",
+    "step3Body": "Eu te busco no hotel e a gente vai. Sem pressa, sem roteiro decorado, sem multidão."
+  },
+  "tours": {
+    "title": "Passeios no Rio de Janeiro",
+    "subtitle": "Privativos, personalizados e sempre com um local.",
+    "from": "A partir de",
+    "duration": "Duração",
+    "hours": "horas",
+    "groupSize": "Tamanho do grupo",
+    "upTo": "até",
+    "people": "pessoas",
+    "highlights": "Destaques",
+    "included": "O que está incluído",
+    "notIncluded": "O que não está incluído",
+    "faqTitle": "Dúvidas sobre este passeio",
+    "relatedTitle": "Você também pode gostar",
+    "priceOnRequest": "Preço sob consulta"
+  },
+  "categories": {
+    "city": "Cidade e cultura",
+    "favela": "Passeios em favelas",
+    "hiking": "Trilhas e natureza",
+    "beach": "Praias",
+    "water": "Barcos e mar",
+    "nightlife": "Vida noturna",
+    "transfer": "Transfers"
+  },
+  "footer": {
+    "tagline": "Passeios privativos no Rio de Janeiro com um guia que nasceu aqui.",
+    "explore": "Explorar",
+    "getInTouch": "Fale comigo",
+    "followAlong": "Acompanhe",
+    "rights": "Todos os direitos reservados."
+  },
+  "common": {
+    "backToHome": "Voltar para o início",
+    "notFoundTitle": "Esta página não existe",
+    "notFoundBody": "A página que você procura não está aqui. Vamos te levar de volta aos passeios."
+  },
+  "whatsapp": {
+    "general": "Oi Gabriel! Encontrei seu site e queria saber mais sobre os seus passeios no Rio.",
+    "tour": "Oi Gabriel! Tenho interesse no passeio {tour}. Pode me falar sobre disponibilidade e preço?"
+  }
+}

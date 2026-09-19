@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "tours": "Tours",
+    "guide": "Guía de Río",
+    "about": "Sobre Gabriel",
+    "faq": "Preguntas frecuentes",
+    "contact": "Contacto",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "language": "Idioma",
+    "skipToContent": "Ir al contenido"
+  },
+  "cta": {
+    "bookOnWhatsapp": "Reservar por WhatsApp",
+    "messageGabriel": "Escribir a Gabriel",
+    "bookThisTour": "Reservar este tour",
+    "seeAllTours": "Ver todos los tours",
+    "viewTour": "Ver tour",
+    "readMore": "Leer más"
+  },
+  "home": {
+    "heroTitle": "Tours privados y personalizados con un guía local en Río de Janeiro",
+    "heroSubtitle": "Sin megáfonos, sin grupos con chalecos iguales. Solo yo enseñándote mi ciudad como se la enseñaría a un amigo.",
+    "toursTitle": "Elige tu Río",
+    "toursSubtitle": "Cada tour se arma en torno a lo que quieres ver. Cuéntame qué te interesa y lo planeamos juntos.",
+    "howItWorksTitle": "Cómo funciona",
+    "reviewsTitle": "Lo que dicen los viajeros"
+  },
+  "howItWorks": {
+    "step1Title": "Escríbeme",
+    "step1Body": "Mándame un WhatsApp. Dime cuándo estás en Río, quién viene y qué te gustaría ver.",
+    "step2Title": "Lo planeamos juntos",
+    "step2Body": "Te propongo lo que encaja con tus días, tu ritmo y tu presupuesto. Nada es fijo: lo adaptamos a ti.",
+    "step3Title": "Nos vemos",
+    "step3Body": "Te recojo en tu hotel y salimos. Sin prisas, sin guion, sin multitudes."
+  },
+  "tours": {
+    "title": "Tours en Río de Janeiro",
+    "subtitle": "Privados, personalizados y siempre con un local.",
+    "from": "Desde",
+    "duration": "Duración",
+    "hours": "horas",
+    "groupSize": "Tamaño del grupo",
+    "upTo": "hasta",
+    "people": "personas",
+    "highlights": "Lo más destacado",
+    "included": "Qué incluye",
+    "notIncluded": "Qué no incluye",
+    "faqTitle": "Preguntas sobre este tour",
+    "relatedTitle": "También te puede interesar",
+    "priceOnRequest": "Precio a consultar"
+  },
+  "categories": {
+    "city": "Ciudad y cultura",
+    "favela": "Tours por favelas",
+    "hiking": "Senderismo y naturaleza",
+    "beach": "Playas",
+    "water": "Barcos y mar",
+    "nightlife": "Vida nocturna",
+    "transfer": "Traslados"
+  },
+  "footer": {
+    "tagline": "Tours privados en Río de Janeiro con un guía que nació aquí.",
+    "explore": "Explorar",
+    "getInTouch": "Contacto",
+    "followAlong": "Sígueme",
+    "rights": "Todos los derechos reservados."
+  },
+  "common": {
+    "backToHome": "Volver al inicio",
+    "notFoundTitle": "Esta página no existe",
+    "notFoundBody": "La página que buscas no está aquí. Te llevamos de vuelta a los tours."
+  },
+  "whatsapp": {
+    "general": "¡Hola Gabriel! Encontré tu web y me gustaría saber más sobre tus tours en Río.",
+    "tour": "¡Hola Gabriel! Me interesa el tour {tour}. ¿Me puedes contar sobre disponibilidad y precio?"
+  }
+}

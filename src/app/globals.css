@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+/*
+  Palette taken from Rio itself, not the Brazilian flag — green-and-yellow
+  reads as a football shirt. Each colour is sampled from somewhere real.
+*/
+@theme {
+  --color-sand: #fbf7f0; /* Ipanema sand — page background */
+  --color-sand-deep: #f2ebdf; /* alternating section background */
+  --color-ink: #1a1a1a; /* calçadão mosaic black — body text */
+  --color-ink-soft: #5c5750; /* secondary text */
+
+  --color-ocean: #0e7c7b; /* the water at Arraial — primary */
+  --color-ocean-dark: #0a5f5e;
+  --color-sunset: #e8552f; /* sky behind Dois Irmãos — CTA */
+  --color-sunset-dark: #c8441f;
+  --color-forest: #1f4d3d; /* Tijuca forest — secondary */
+
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1da851;
+
+  --font-display: var(--font-bricolage), Georgia, serif;
+  --font-body: var(--font-archivo), system-ui, sans-serif;
+
+  --radius-card: 0.5rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-sand);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  /* Visible keyboard focus everywhere — never remove it. */
+  :focus-visible {
+    outline: 2px solid var(--color-ocean);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "tours": "Visites",
+    "guide": "Guide de Rio",
+    "about": "À propos de Gabriel",
+    "faq": "Questions fréquentes",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Fermer",
+    "language": "Langue",
+    "skipToContent": "Aller au contenu"
+  },
+  "cta": {
+    "bookOnWhatsapp": "Réserver sur WhatsApp",
+    "messageGabriel": "Écrire à Gabriel",
+    "bookThisTour": "Réserver cette visite",
+    "seeAllTours": "Voir toutes les visites",
+    "viewTour": "Voir la visite",
+    "readMore": "En savoir plus"
+  },
+  "home": {
+    "heroTitle": "Visites privées et personnalisées avec un guide local à Rio de Janeiro",
+    "heroSubtitle": "Pas de mégaphone, pas de groupe en gilets assortis. Juste moi qui vous montre ma ville comme je la montrerais à un ami.",
+    "toursTitle": "Choisissez votre Rio",
+    "toursSubtitle": "Chaque visite se construit autour de ce que vous voulez voir. Dites-moi ce qui vous attire et on la prépare ensemble.",
+    "howItWorksTitle": "Comment ça marche",
+    "reviewsTitle": "Ce que disent les voyageurs"
+  },
+  "howItWorks": {
+    "step1Title": "Écrivez-moi",
+    "step1Body": "Envoyez-moi un WhatsApp. Dites-moi quand vous êtes à Rio, qui vous accompagne et ce que vous aimeriez voir.",
+    "step2Title": "On prépare ensemble",
+    "step2Body": "Je vous propose ce qui correspond à vos journées, à votre rythme et à votre budget. Rien n'est figé : tout s'adapte à vous.",
+    "step3Title": "On se retrouve",
+    "step3Body": "Je viens vous chercher à votre hôtel et on y va. Sans courir, sans script, sans foule."
+  },
+  "tours": {
+    "title": "Visites à Rio de Janeiro",
+    "subtitle": "Privées, personnalisées et toujours avec un local.",
+    "from": "À partir de",
+    "duration": "Durée",
+    "hours": "heures",
+    "groupSize": "Taille du groupe",
+    "upTo": "jusqu'à",
+    "people": "personnes",
+    "highlights": "Points forts",
+    "included": "Ce qui est inclus",
+    "notIncluded": "Ce qui n'est pas inclus",
+    "faqTitle": "Questions sur cette visite",
+    "relatedTitle": "Pourrait aussi vous plaire",
+    "priceOnRequest": "Prix sur demande"
+  },
+  "categories": {
+    "city": "Ville et culture",
+    "favela": "Visites de favelas",
+    "hiking": "Randonnée et nature",
+    "beach": "Plages",
+    "water": "Bateaux et mer",
+    "nightlife": "Vie nocturne",
+    "transfer": "Transferts"
+  },
+  "footer": {
+    "tagline": "Visites privées à Rio de Janeiro avec un guide né sur place.",
+    "explore": "Explorer",
+    "getInTouch": "Me contacter",
+    "followAlong": "Me suivre",
+    "rights": "Tous droits réservés."
+  },
+  "common": {
+    "backToHome": "Retour à l'accueil",
+    "notFoundTitle": "Cette page n'existe pas",
+    "notFoundBody": "La page que vous cherchez n'est pas ici. Retournons aux visites."
+  },
+  "whatsapp": {
+    "general": "Bonjour Gabriel ! J’ai trouvé votre site et j’aimerais en savoir plus sur vos visites à Rio.",
+    "tour": "Bonjour Gabriel ! La visite {tour} m’intéresse. Pourriez-vous me parler des disponibilités et du prix ?"
+  }
+}

@@ -1,0 +1,3 @@
+# Bare "/" goes to the default language. Only the exact root — a wildcard here
+# would rewrite /en/tours/ into /en/en/tours/ and loop.
+/    /en/    302

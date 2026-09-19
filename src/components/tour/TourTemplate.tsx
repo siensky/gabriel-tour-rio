@@ -1,3 +1,4 @@
+import { AboutGabriel } from '@/components/sections/AboutGabriel'
 import { Breadcrumb } from '@/components/tour/Breadcrumb'
 import { RelatedTours } from '@/components/tour/RelatedTours'
 import { TourFaq } from '@/components/tour/TourFaq'
@@ -41,6 +42,10 @@ export function TourTemplate({
       <TourHighlights copy={copy} dict={dict} />
       <TourFaq copy={copy} dict={dict} />
       <RelatedTours tours={relatedTours(tour)} locale={locale} dict={dict} />
+
+      {/* Author byline — ties this page's content back to a real, named local
+          guide (see the plan's "Nyckelkomponenter som återanvänds"). */}
+      <AboutGabriel locale={locale} dict={dict} variant="compact" />
     </>
   )
 }

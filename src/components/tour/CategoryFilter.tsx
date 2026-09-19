@@ -8,10 +8,10 @@ import type { Dictionary, Locale } from '@/types'
 import type { Tour, TourCategory } from '@/types/tour'
 
 /**
- * The only interactive piece of the tour hall. Every tour is already in the
- * server-rendered HTML (static export prerenders client components too), so
- * filtering only ever hides/shows what a crawler can already see — nothing
- * here gatekeeps content behind JavaScript.
+ * The only interactive piece of the tour hall. Static export prerenders
+ * client components too, so the "all" state — every tour — is what ships in
+ * the initial HTML a crawler reads; clicking a filter only changes what's
+ * rendered afterward, in the visitor's own browser.
  */
 export function CategoryFilter({
   tours,

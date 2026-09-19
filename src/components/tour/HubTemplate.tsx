@@ -1,3 +1,4 @@
+import { AboutGabriel } from '@/components/sections/AboutGabriel'
 import { Breadcrumb } from '@/components/tour/Breadcrumb'
 import { TourCard } from '@/components/tour/TourCard'
 import { TourHero } from '@/components/tour/TourHero'
@@ -41,7 +42,7 @@ export function HubTemplate({
         </Container>
       </Section>
 
-      <Section tone="sand">
+      <Section tone="sandDeep">
         <Container>
           <h2 className="text-2xl sm:text-3xl">{dict.tours.title}</h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -51,6 +52,9 @@ export function HubTemplate({
           </div>
         </Container>
       </Section>
+
+      {/* Author byline — see TourTemplate for the same pattern. */}
+      <AboutGabriel locale={locale} dict={dict} variant="compact" />
     </>
   )
 }

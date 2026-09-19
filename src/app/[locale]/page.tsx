@@ -1,14 +1,28 @@
 import { notFound } from 'next/navigation'
 
+import { TourCategoryBand } from '@/components/sections/TourCategoryBand'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { WaveDivider } from '@/components/ui/WaveDivider'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { getToursByCategory } from '@/content/tours'
 import { getDictionary, isLocale, localeParams } from '@/lib/i18n'
+import type { TourCategory } from '@/types/tour'
 
 export function generateStaticParams() {
   return localeParams()
 }
+
+/** Same order as the plan's tour clusters. */
+const CATEGORY_ORDER: TourCategory[] = [
+  'city',
+  'favela',
+  'hiking',
+  'beach',
+  'water',
+  'nightlife',
+  'transfer',
+]
 
 export default async function HomePage({
   params,
@@ -43,11 +57,23 @@ export default async function HomePage({
 
       <WaveDivider className="text-ocean" />
 
-      {/* TOURS — category bands are built in phase 2, once tours.ts exists. */}
+      {/* TOURS — grouped in category bands; 24 tours is too many for one flat grid. */}
       <Section tone="sandDeep" id="tours">
         <Container>
           <h2 className="text-3xl sm:text-4xl">{dict.home.toursTitle}</h2>
           <p className="mt-3 max-w-2xl text-ink-soft">{dict.home.toursSubtitle}</p>
+
+          <div className="mt-10">
+            {CATEGORY_ORDER.map((category) => (
+              <TourCategoryBand
+                key={category}
+                category={category}
+                tours={getToursByCategory(category).filter((tour) => !tour.hub)}
+                locale={locale}
+                dict={dict}
+              />
+            ))}
+          </div>
         </Container>
       </Section>
 

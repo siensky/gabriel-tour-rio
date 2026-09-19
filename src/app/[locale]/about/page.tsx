@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation'
 
+import { AboutGabriel } from '@/components/sections/AboutGabriel'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
+import { gabriel } from '@/content/gabriel'
 import { getDictionary, isLocale, localeParams } from '@/lib/i18n'
 
 export function generateStaticParams() {
@@ -9,11 +11,14 @@ export function generateStaticParams() {
 }
 
 /**
- * Structural placeholder only. The real page — Gabriel's story in his own
- * voice, the <AboutGabriel> component, the Person schema — is Fas 3 ("sajtens
- * premiss, inte en detalj att klämma in sist"), built from his voice memos.
- * This route exists now so /about/ resolves and the site's URL count is
- * complete for the Fas 2 build check.
+ * The full version of Gabriel's story. The homepage section (variant="full")
+ * gives the short version and links here; this page carries the longer
+ * `aboutBody`. `linkToAbout={false}` because linking to the page you're
+ * already on is dead weight.
+ *
+ * Content is TODO placeholder — see content/gabriel.ts — pending his voice
+ * memos. The Person JSON-LD schema is added in Fas 4 with the rest of the
+ * structured-data layer, not here.
  */
 export default async function AboutPage({
   params,
@@ -24,16 +29,24 @@ export default async function AboutPage({
   if (!isLocale(locale)) notFound()
 
   const dict = await getDictionary(locale)
+  const copy = gabriel[locale]
 
   return (
-    <Section tone="sand" className="pt-10">
-      <Container>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl">{dict.nav.about}</h1>
-        <p className="mt-4 max-w-2xl text-ink-soft">
-          TODO ({locale}): Gabriel&apos;s story, in his own words — built in Fas 3 from his
-          voice memos. See the plan&apos;s &quot;Gabriels positionering&quot;.
-        </p>
-      </Container>
-    </Section>
+    <>
+      <AboutGabriel locale={locale} dict={dict} variant="full" linkToAbout={false} />
+
+      <Section tone="sandDeep">
+        <Container>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl">{copy.aboutTitle}</h1>
+          <p className="mt-4 max-w-2xl text-lg text-ink-soft">{copy.aboutIntro}</p>
+
+          <div className="mt-8 max-w-2xl space-y-4 text-ink-soft">
+            {copy.aboutBody.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </Container>
+      </Section>
+    </>
   )
 }

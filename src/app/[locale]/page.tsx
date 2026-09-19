@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 
+import { AboutGabriel } from '@/components/sections/AboutGabriel'
 import { TourCategoryBand } from '@/components/sections/TourCategoryBand'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
@@ -57,6 +58,13 @@ export default async function HomePage({
 
       <WaveDivider className="text-ocean" />
 
+      {/* MEET GABRIEL — directly under the hero, before the tour listing.
+          The differentiator should be the second thing a visitor sees, not
+          something they find after scrolling past the products first. */}
+      <AboutGabriel locale={locale} dict={dict} variant="full" />
+
+      <WaveDivider className="text-ocean scale-y-[-1]" />
+
       {/* TOURS — grouped in category bands; 24 tours is too many for one flat grid. */}
       <Section tone="sandDeep" id="tours">
         <Container>
@@ -76,8 +84,6 @@ export default async function HomePage({
           </div>
         </Container>
       </Section>
-
-      {/* MEET GABRIEL — built in phase 3, from his own voice memos. */}
 
       <Section tone="sand">
         <Container>

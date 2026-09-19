@@ -32,6 +32,7 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
           hrefLang={locale}
           lang={locale}
           aria-current={locale === current ? 'true' : undefined}
+          aria-label={LOCALE_NAMES[locale]}
           title={LOCALE_NAMES[locale]}
           className={cn(
             'rounded px-2 py-1 text-xs font-semibold uppercase transition-colors',

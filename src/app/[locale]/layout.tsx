@@ -7,7 +7,9 @@ import '@/app/globals.css'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { JsonLd } from '@/components/seo/JsonLd'
 import { getDictionary, isLocale, localeParams } from '@/lib/i18n'
+import { buildTravelAgencySchema, buildWebSiteSchema } from '@/lib/seo'
 
 /*
   Self-hosted at build time by next/font — no request to Google, no layout
@@ -52,6 +54,12 @@ export default async function LocaleLayout({
         >
           {dict.nav.skipToContent}
         </a>
+
+        {/* Site-wide entities — once per page, every page, so every crawl of
+            the site sees the same TravelAgency/WebSite regardless of which
+            page it enters on. Ties the site to the Google Business Profile
+            via sameAs once that URL is filled in (see content/business.ts). */}
+        <JsonLd data={[buildTravelAgencySchema(), buildWebSiteSchema()]} />
 
         <Header locale={locale} dict={dict} />
 

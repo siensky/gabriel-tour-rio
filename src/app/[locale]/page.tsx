@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { AboutGabriel } from '@/components/sections/AboutGabriel'
@@ -8,10 +9,28 @@ import { WaveDivider } from '@/components/ui/WaveDivider'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { getToursByCategory } from '@/content/tours'
 import { getDictionary, isLocale, localeParams } from '@/lib/i18n'
+import { buildMetadata } from '@/lib/seo'
 import type { TourCategory } from '@/types/tour'
 
 export function generateStaticParams() {
   return localeParams()
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  if (!isLocale(locale)) return {}
+
+  const dict = await getDictionary(locale)
+  return buildMetadata({
+    locale,
+    path: '',
+    title: dict.meta.home.title,
+    description: dict.meta.home.description,
+  })
 }
 
 /** Same order as the plan's tour clusters. */

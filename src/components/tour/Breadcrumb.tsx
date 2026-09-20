@@ -1,13 +1,16 @@
 import Link from 'next/link'
 
 import { Container } from '@/components/ui/Container'
+import { buildBreadcrumbTrail, type Crumb } from '@/lib/seo'
 import type { Dictionary, Locale } from '@/types'
 
-type Crumb = { href: string; label: string }
-
 /**
- * Visible breadcrumb trail. The matching BreadcrumbList JSON-LD (same trail,
- * machine-readable) is added in Fas 4 — this component is what it will read.
+ * Visible breadcrumb trail. `trail` is everything after Home — callers
+ * supply their own full path (e.g. tour pages include a "Tours" crumb
+ * themselves; /about does not), since not every page sits under /tours.
+ *
+ * Uses the same buildBreadcrumbTrail as buildBreadcrumbSchema (lib/seo.ts),
+ * so the visible trail and the BreadcrumbList JSON-LD can never disagree.
  */
 export function Breadcrumb({
   locale,
@@ -18,11 +21,7 @@ export function Breadcrumb({
   dict: Dictionary
   trail: Crumb[]
 }) {
-  const items: Crumb[] = [
-    { href: `/${locale}/`, label: dict.common.backToHome },
-    { href: `/${locale}/tours/`, label: dict.nav.tours },
-    ...trail,
-  ]
+  const items = buildBreadcrumbTrail(locale, dict, trail)
 
   return (
     <nav aria-label="Breadcrumb" className="border-b border-sand-deep">

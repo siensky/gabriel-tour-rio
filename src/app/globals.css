@@ -10,17 +10,27 @@
   --color-ink: #1a1a1a; /* calçadão mosaic black — body text */
   --color-ink-soft: #5c5750; /* secondary text */
 
-  --color-ocean: #0e7c7b; /* the water at Arraial — primary */
+  /* #0E7C7B (the original "water at Arraial" shade) only reached 4.23:1
+     against sand-deep at normal text sizes — just under WCAG AA's 4.5:1.
+     Darkened slightly; still reads as the same teal, now passes on every
+     background it's used against. */
+  --color-ocean: #0c6e6d;
   --color-ocean-dark: #0a5f5e;
   --color-sunset: #e8552f; /* sky behind Dois Irmãos — CTA */
   --color-sunset-dark: #c8441f;
   --color-forest: #1f4d3d; /* Tijuca forest — secondary */
 
-  --color-whatsapp: #25d366;
-  --color-whatsapp-dark: #1da851;
+  /* WhatsApp's own brand green (#25D366) only reaches 1.98:1 contrast with
+     white text — nowhere near the 4.5:1 WCAG AA needs, and it's used on
+     every booking button on the site. This is WhatsApp's own dark teal-green
+     (from their header bar, not invented here) — 7.67:1, still instantly
+     recognisable as WhatsApp, actually accessible. */
+  --color-whatsapp: #075e54;
+  --color-whatsapp-dark: #054940;
 
   --font-display: var(--font-bricolage), Georgia, serif;
   --font-body: var(--font-archivo), system-ui, sans-serif;
+  --font-signature: var(--font-caveat), cursive;
 
   --radius-card: 0.5rem;
 }

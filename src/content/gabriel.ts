@@ -30,3 +30,10 @@ function placeholderCopy(locale: Locale): GabrielCopy {
 export const gabriel: Record<Locale, GabrielCopy> = Object.fromEntries(
   LOCALES.map((locale) => [locale, placeholderCopy(locale)]),
 ) as Record<Locale, GabrielCopy>
+
+/**
+ * His portrait — one photo, not per-locale (a person doesn't have a
+ * different face per language). Extension-less slug, same convention as
+ * Tour.images.hero — see assets/raw/README.md. Empty until he sends photos.
+ */
+export const gabrielPortrait = ''

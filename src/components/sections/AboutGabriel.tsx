@@ -1,9 +1,10 @@
 import Link from 'next/link'
 
 import { Container } from '@/components/ui/Container'
-import { PlaceholderImage } from '@/components/ui/PlaceholderImage'
+import { Picture } from '@/components/ui/Picture'
 import { Section } from '@/components/ui/Section'
-import { gabriel } from '@/content/gabriel'
+import { business } from '@/content/business'
+import { gabriel, gabrielPortrait } from '@/content/gabriel'
 import { cn } from '@/lib/utils'
 import type { Dictionary, Locale } from '@/types'
 
@@ -45,9 +46,11 @@ export function AboutGabriel({
               : 'sm:grid-cols-[minmax(0,220px)_1fr] gap-8',
           )}
         >
-          <PlaceholderImage
-            label={copy.signOff}
+          <Picture
+            src={gabrielPortrait}
+            alt={business.legalName}
             className={cn('aspect-square w-full rounded-card', imageSize)}
+            sizes="220px"
           />
 
           <div>
@@ -59,14 +62,17 @@ export function AboutGabriel({
               ))}
             </div>
 
-            <p className="mt-4 font-display text-lg">{copy.signOff}</p>
+            <p className="mt-3 font-signature text-3xl text-sunset">{copy.signOff}</p>
 
             {linkToAbout && (
+              // Visible text itself is descriptive ("Read more" alone reads
+              // fine in context but fails Lighthouse's link-text audit,
+              // which checks the rendered text, not aria-label).
               <Link
                 href={`/${locale}/about/`}
                 className="mt-4 inline-block text-sm font-semibold text-ocean hover:underline"
               >
-                {dict.cta.readMore}
+                {dict.cta.readMoreAboutGabriel}
               </Link>
             )}
           </div>

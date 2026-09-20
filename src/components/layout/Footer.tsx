@@ -74,12 +74,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </ul>
 
             <div className="mt-5">
-              <LanguageSwitcher current={locale} />
+              <LanguageSwitcher current={locale} tone="dark" />
             </div>
           </div>
         </div>
 
-        <p className="mt-12 border-t border-sand/20 pt-6 text-xs text-sand/60">
+        {/* sand/60 measured 4.37:1 on bg-forest — just under WCAG AA's 4.5:1. */}
+        <p className="mt-12 border-t border-sand/20 pt-6 text-xs text-sand/70">
           &copy; {new Date().getFullYear()} {business.legalName}. {dict.footer.rights}
         </p>
       </Container>

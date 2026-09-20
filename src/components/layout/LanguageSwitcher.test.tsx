@@ -17,11 +17,11 @@ describe('LanguageSwitcher', () => {
   it('only swaps the locale segment, keeping the rest of the path', () => {
     render(<LanguageSwitcher current="en" />)
 
-    expect(screen.getByRole('link', { name: 'Português' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'PT — Português' })).toHaveAttribute(
       'href',
       '/pt/tours/christ-the-redeemer-tour',
     )
-    expect(screen.getByRole('link', { name: 'Español' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'ES — Español' })).toHaveAttribute(
       'href',
       '/es/tours/christ-the-redeemer-tour',
     )
@@ -30,12 +30,39 @@ describe('LanguageSwitcher', () => {
   it('marks the current language, and only the current language', () => {
     render(<LanguageSwitcher current="fr" />)
 
-    expect(screen.getByRole('link', { name: 'Français' })).toHaveAttribute('aria-current', 'true')
-    expect(screen.getByRole('link', { name: 'English' })).not.toHaveAttribute('aria-current')
+    expect(screen.getByRole('link', { name: 'FR — Français' })).toHaveAttribute(
+      'aria-current',
+      'true',
+    )
+    expect(screen.getByRole('link', { name: 'EN — English' })).not.toHaveAttribute('aria-current')
   })
 
   it('renders all four locales', () => {
     render(<LanguageSwitcher current="en" />)
     expect(screen.getAllByRole('link')).toHaveLength(4)
+  })
+
+  it('every accessible name starts with the visible code — WCAG 2.5.3 Label in Name', () => {
+    render(<LanguageSwitcher current="en" />)
+    for (const link of screen.getAllByRole('link')) {
+      const visibleText = link.textContent?.toUpperCase() ?? ''
+      expect(link.getAttribute('aria-label')?.startsWith(visibleText)).toBe(true)
+    }
+  })
+
+  // Regression test for a real bug: text-ink-soft (the default inactive
+  // colour, built for the light header background) is nearly invisible on
+  // the footer's dark bg-forest — 1.34:1 contrast, caught by Lighthouse.
+  it('tone="dark" swaps inactive links away from text-ink-soft', () => {
+    render(<LanguageSwitcher current="en" tone="dark" />)
+    const inactive = screen.getByRole('link', { name: 'FR — Français' })
+    expect(inactive.className).not.toContain('text-ink-soft')
+    expect(inactive.className).toContain('text-sand/70')
+  })
+
+  it('defaults to the light tone (text-ink-soft) when tone is not given', () => {
+    render(<LanguageSwitcher current="en" />)
+    const inactive = screen.getByRole('link', { name: 'FR — Français' })
+    expect(inactive.className).toContain('text-ink-soft')
   })
 })

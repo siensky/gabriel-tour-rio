@@ -7,5 +7,8 @@ next-env.d.ts
 .DS_Store
 .env*.local
 
-# Optimised images are generated from assets/raw by scripts/optimize-images.mjs
-public/img/
+# Optimised images are generated from assets/raw by scripts/optimize-images.mjs.
+# manifest.json is tracked (starts as {}) so a fresh checkout always has
+# something for <Picture> to import, even before anyone has run the pipeline.
+public/img/*
+!public/img/manifest.json

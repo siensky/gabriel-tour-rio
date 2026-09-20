@@ -1,13 +1,34 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { AboutGabriel } from '@/components/sections/AboutGabriel'
+import { Breadcrumb } from '@/components/tour/Breadcrumb'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
+import { JsonLd } from '@/components/seo/JsonLd'
 import { gabriel } from '@/content/gabriel'
 import { getDictionary, isLocale, localeParams } from '@/lib/i18n'
+import { buildBreadcrumbSchema, buildMetadata, buildPersonSchema, type Crumb } from '@/lib/seo'
 
 export function generateStaticParams() {
   return localeParams()
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  if (!isLocale(locale)) return {}
+
+  const dict = await getDictionary(locale)
+  return buildMetadata({
+    locale,
+    path: 'about',
+    title: dict.meta.about.title,
+    description: dict.meta.about.description,
+  })
 }
 
 /**
@@ -17,8 +38,8 @@ export function generateStaticParams() {
  * already on is dead weight.
  *
  * Content is TODO placeholder — see content/gabriel.ts — pending his voice
- * memos. The Person JSON-LD schema is added in Fas 4 with the rest of the
- * structured-data layer, not here.
+ * memos. This is the primary page for the Person schema — every other
+ * page's byline links back here.
  */
 export default async function AboutPage({
   params,
@@ -30,9 +51,13 @@ export default async function AboutPage({
 
   const dict = await getDictionary(locale)
   const copy = gabriel[locale]
+  const trail: Crumb[] = [{ href: `/${locale}/about/`, label: dict.nav.about }]
 
   return (
     <>
+      <JsonLd data={[buildBreadcrumbSchema(locale, dict, trail), buildPersonSchema(locale)]} />
+      <Breadcrumb locale={locale} dict={dict} trail={trail} />
+
       <AboutGabriel locale={locale} dict={dict} variant="full" linkToAbout={false} />
 
       <Section tone="sandDeep">

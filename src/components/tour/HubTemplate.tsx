@@ -4,7 +4,9 @@ import { TourCard } from '@/components/tour/TourCard'
 import { TourHero } from '@/components/tour/TourHero'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
+import { JsonLd } from '@/components/seo/JsonLd'
 import { getChildTours } from '@/content/tours'
+import { buildBreadcrumbSchema, buildPersonSchema, type Crumb } from '@/lib/seo'
 import type { Dictionary, Locale } from '@/types'
 import type { Tour, TourCopy } from '@/types/tour'
 
@@ -13,6 +15,9 @@ import type { Tour, TourCopy } from '@/types/tour'
  * owns the generic high-volume search term, linking down to each specific
  * tour so the individual pages don't cannibalise each other's ranking — see
  * the plan's "hub-and-spoke" section.
+ *
+ * No TouristTrip/Offer schema here — a hub lists several tours, it isn't
+ * itself a single bookable product.
  */
 export function HubTemplate({
   tour,
@@ -26,10 +31,16 @@ export function HubTemplate({
   dict: Dictionary
 }) {
   const children = getChildTours(tour.slug)
+  const trail: Crumb[] = [
+    { href: `/${locale}/tours/`, label: dict.nav.tours },
+    { href: `/${locale}/tours/${tour.slug}/`, label: copy.title },
+  ]
 
   return (
     <>
-      <Breadcrumb locale={locale} dict={dict} trail={[{ href: '#', label: copy.title }]} />
+      <JsonLd data={[buildBreadcrumbSchema(locale, dict, trail), buildPersonSchema(locale)]} />
+
+      <Breadcrumb locale={locale} dict={dict} trail={trail} />
       <TourHero tour={tour} copy={copy} dict={dict} />
 
       <Section tone="sandDeep">

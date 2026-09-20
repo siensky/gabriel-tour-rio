@@ -96,6 +96,7 @@ function buildTour(spec: TourSpec, order: number): Tour {
     // TODO: real photos from Gabriel — <PlaceholderImage> renders until these are set.
     images: { hero: '', gallery: [] },
     youtubeId: null,
+    videoUploadDate: null,
     // TODO: Gabriel fills these in — see the plan's "Gabriel's checklist".
     priceFromBRL: null,
     durationHours: null,

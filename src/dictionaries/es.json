@@ -74,5 +74,27 @@
   "whatsapp": {
     "general": "¡Hola Gabriel! Encontré tu web y me gustaría saber más sobre tus tours en Río.",
     "tour": "¡Hola Gabriel! Me interesa el tour {tour}. ¿Me puedes contar sobre disponibilidad y precio?"
+  },
+  "meta": {
+    "home": {
+      "title": "TODO: home meta title, ≤60 chars (es)",
+      "description": "TODO: home meta description, ≤155 chars (es)"
+    },
+    "tours": {
+      "title": "TODO: tours meta title, ≤60 chars (es)",
+      "description": "TODO: tours meta description, ≤155 chars (es)"
+    },
+    "about": {
+      "title": "TODO: about meta title, ≤60 chars (es)",
+      "description": "TODO: about meta description, ≤155 chars (es)"
+    },
+    "faq": {
+      "title": "TODO: faq meta title, ≤60 chars (es)",
+      "description": "TODO: faq meta description, ≤155 chars (es)"
+    },
+    "contact": {
+      "title": "TODO: contact meta title, ≤60 chars (es)",
+      "description": "TODO: contact meta description, ≤155 chars (es)"
+    }
   }
 }

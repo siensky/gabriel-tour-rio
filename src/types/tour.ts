@@ -9,10 +9,13 @@ export type TourCategory =
   | 'nightlife'
   | 'transfer'
 
+/** Shared by TourCopy.faq and the site-wide FAQ (content/faq.ts) — one shape, one schema builder. */
+export type FaqItem = { question: string; answer: string }
+
 export type TourCopy = {
   /** Used as both the <h1> and the base of the <title>. */
   title: string
-  /** ≤60 characters. */
+  /** ≤60 characters — used directly as the <title>, no template appended. */
   metaTitle: string
   /** ≤155 characters. */
   metaDescription: string
@@ -24,7 +27,7 @@ export type TourCopy = {
   highlights: string[]
   included: string[]
   notIncluded: string[]
-  faq: { question: string; answer: string }[]
+  faq: FaqItem[]
   /** Pre-filled WhatsApp text — see lib/whatsapp.ts. */
   whatsappMessage: string
   imageAlt: string[]
@@ -42,6 +45,9 @@ export type Tour = {
   parent: string | null
   images: { hero: string; gallery: string[] }
   youtubeId: string | null
+  /** ISO 8601 date (e.g. "2026-06-01") — required by VideoObject alongside
+   *  youtubeId; the schema only renders when both are set. */
+  videoUploadDate: string | null
   // TODO: Gabriel fills these in — see the plan's "Gabriel's checklist".
   priceFromBRL: number | null
   durationHours: number | null

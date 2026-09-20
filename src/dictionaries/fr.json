@@ -74,5 +74,27 @@
   "whatsapp": {
     "general": "Bonjour Gabriel ! J’ai trouvé votre site et j’aimerais en savoir plus sur vos visites à Rio.",
     "tour": "Bonjour Gabriel ! La visite {tour} m’intéresse. Pourriez-vous me parler des disponibilités et du prix ?"
+  },
+  "meta": {
+    "home": {
+      "title": "TODO: home meta title, ≤60 chars (fr)",
+      "description": "TODO: home meta description, ≤155 chars (fr)"
+    },
+    "tours": {
+      "title": "TODO: tours meta title, ≤60 chars (fr)",
+      "description": "TODO: tours meta description, ≤155 chars (fr)"
+    },
+    "about": {
+      "title": "TODO: about meta title, ≤60 chars (fr)",
+      "description": "TODO: about meta description, ≤155 chars (fr)"
+    },
+    "faq": {
+      "title": "TODO: faq meta title, ≤60 chars (fr)",
+      "description": "TODO: faq meta description, ≤155 chars (fr)"
+    },
+    "contact": {
+      "title": "TODO: contact meta title, ≤60 chars (fr)",
+      "description": "TODO: contact meta description, ≤155 chars (fr)"
+    }
   }
 }

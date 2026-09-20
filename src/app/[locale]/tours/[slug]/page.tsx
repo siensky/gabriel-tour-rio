@@ -1,9 +1,11 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { HubTemplate } from '@/components/tour/HubTemplate'
 import { TourTemplate } from '@/components/tour/TourTemplate'
 import { tours, getTour } from '@/content/tours'
 import { getDictionary, isLocale } from '@/lib/i18n'
+import { buildMetadata } from '@/lib/seo'
 
 /**
  * One dynamic route for every tour — hub or leaf. Next combines this with the
@@ -12,6 +14,26 @@ import { getDictionary, isLocale } from '@/lib/i18n'
  */
 export function generateStaticParams() {
   return tours.map((tour) => ({ slug: tour.slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}): Promise<Metadata> {
+  const { locale, slug } = await params
+  if (!isLocale(locale)) return {}
+
+  const tour = getTour(slug)
+  const copy = tour?.i18n[locale]
+  if (!tour || !copy) return {}
+
+  return buildMetadata({
+    locale,
+    path: `tours/${tour.slug}`,
+    title: copy.metaTitle,
+    description: copy.metaDescription,
+  })
 }
 
 export default async function TourPage({

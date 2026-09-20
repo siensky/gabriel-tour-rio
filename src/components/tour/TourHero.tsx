@@ -1,5 +1,5 @@
 import { Container } from '@/components/ui/Container'
-import { PlaceholderImage } from '@/components/ui/PlaceholderImage'
+import { Picture } from '@/components/ui/Picture'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import type { Dictionary } from '@/types'
 import type { Tour, TourCopy } from '@/types/tour'
@@ -15,7 +15,13 @@ export function TourHero({
 }) {
   return (
     <div>
-      <PlaceholderImage label={copy.title} className="aspect-[16/9] w-full sm:aspect-[21/9]" />
+      {/* priority: this is the page's LCP element — never lazy-load it. */}
+      <Picture
+        src={tour.images.hero}
+        alt={copy.imageAlt[0] ?? copy.title}
+        className="aspect-[16/9] w-full sm:aspect-[21/9]"
+        priority
+      />
 
       <Container>
         <div className="max-w-3xl py-8">

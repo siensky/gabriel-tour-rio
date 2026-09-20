@@ -13,8 +13,19 @@ import type { Locale } from '@/types'
  *
  * These are ordinary links, not client-side state: each language is its own
  * crawlable URL, which is what hreflang needs anyway.
+ *
+ * `tone="dark"` is for the footer's bg-forest background — text-ink-soft
+ * (the default inactive colour) is built for the light sand background used
+ * everywhere else and is nearly invisible on dark green (1.34:1 contrast,
+ * caught by Lighthouse — see the plan's Fas 5 Lighthouse verification).
  */
-export function LanguageSwitcher({ current }: { current: Locale }) {
+export function LanguageSwitcher({
+  current,
+  tone = 'light',
+}: {
+  current: Locale
+  tone?: 'light' | 'dark'
+}) {
   const pathname = usePathname()
 
   const pathFor = (locale: Locale) => {
@@ -32,13 +43,18 @@ export function LanguageSwitcher({ current }: { current: Locale }) {
           hrefLang={locale}
           lang={locale}
           aria-current={locale === current ? 'true' : undefined}
-          aria-label={LOCALE_NAMES[locale]}
+          // Must start with the visible text ("PT") for WCAG 2.5.3 (Label in
+          // Name) — an aria-label of just "Português" doesn't contain "PT",
+          // which Lighthouse's accessibility audit flags directly.
+          aria-label={`${locale.toUpperCase()} — ${LOCALE_NAMES[locale]}`}
           title={LOCALE_NAMES[locale]}
           className={cn(
             'rounded px-2 py-1 text-xs font-semibold uppercase transition-colors',
             locale === current
               ? 'bg-ink text-sand'
-              : 'text-ink-soft hover:bg-sand-deep hover:text-ink',
+              : tone === 'dark'
+                ? 'text-sand/70 hover:bg-sand/10 hover:text-sand'
+                : 'text-ink-soft hover:bg-sand-deep hover:text-ink',
           )}
         >
           {locale}

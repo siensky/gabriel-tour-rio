@@ -47,7 +47,9 @@ export function CategoryFilter({
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((tour) => (
-          <TourCard key={tour.slug} tour={tour} locale={locale} dict={dict} />
+          // h2: this always sits right under the /tours page's own h1, with
+          // nothing in between (no band heading like the homepage has).
+          <TourCard key={tour.slug} tour={tour} locale={locale} dict={dict} headingLevel="h2" />
         ))}
       </div>
     </div>

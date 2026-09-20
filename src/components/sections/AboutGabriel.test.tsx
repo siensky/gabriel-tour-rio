@@ -28,7 +28,7 @@ describe('AboutGabriel', () => {
     // next/link drops a single trailing slash when rendered outside a full
     // Next.js router context (confirmed in isolation) — the real static
     // export (trailingSlash: true) was already verified correct in Fas 1–2.
-    expect(screen.getByRole('link', { name: en.cta.readMore })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: en.cta.readMoreAboutGabriel })).toHaveAttribute(
       'href',
       '/pt/about',
     )
@@ -36,14 +36,12 @@ describe('AboutGabriel', () => {
 
   it('hides the link when linkToAbout is false', () => {
     render(<AboutGabriel locale="en" dict={en} variant="full" linkToAbout={false} />)
-    expect(screen.queryByRole('link', { name: en.cta.readMore })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: en.cta.readMoreAboutGabriel })).not.toBeInTheDocument()
   })
 
-  it('always shows the sign-off', () => {
+  it('always shows the sign-off, in the handwriting-style signature font', () => {
     render(<AboutGabriel locale="en" dict={en} variant="compact" />)
-    // The sign-off text also appears as the portrait placeholder's caption
-    // (see PlaceholderImage) until a real photo replaces it, so more than one
-    // match is expected — this only asserts the signature itself is present.
-    expect(screen.getAllByText(gabriel.en.signOff).length).toBeGreaterThan(0)
+    const signOff = screen.getByText(gabriel.en.signOff)
+    expect(signOff).toHaveClass('font-signature')
   })
 })

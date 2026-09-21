@@ -1,0 +1,8 @@
+{
+  "name": "gabriel-tour-rio",
+  "compatibility_date": "2026-09-21",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

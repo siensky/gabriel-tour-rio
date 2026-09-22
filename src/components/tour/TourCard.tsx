@@ -40,14 +40,21 @@ export function TourCard({
 
   const href = `/${locale}/tours/${tour.slug}/`
 
+  const priceLine = [
+    tour.durationHours !== null ? `${tour.durationHours} ${dict.tours.hours}` : null,
+    tour.priceFromBRL !== null ? `${dict.tours.from} R$ ${tour.priceFromBRL}` : dict.tours.priceOnRequest,
+  ]
+    .filter(Boolean)
+    .join(' · ')
+
   return (
     <article
       className={cn(
-        'flex flex-col overflow-hidden rounded-card border border-sand-deep bg-sand',
+        'flex flex-col overflow-hidden rounded-card bg-white shadow-sm ring-1 ring-ink/5 transition-shadow hover:shadow-md',
         featured && 'sm:flex-row',
       )}
     >
-      <Link href={href} className={cn('block', featured && 'sm:w-2/5 sm:shrink-0')}>
+      <Link href={href} className={cn('relative block', featured && 'sm:w-2/5 sm:shrink-0')}>
         <Picture
           src={tour.images.hero}
           alt={copy.imageAlt[0] ?? copy.title}
@@ -62,13 +69,12 @@ export function TourCard({
           // Marking several cards high-priority would just have them compete
           // for bandwidth instead of helping any one of them load faster.
         />
+        <span className="absolute left-3 top-3 rounded-full bg-badge-gold px-3 py-1 text-xs font-semibold text-ink">
+          {dict.categories[tour.category]}
+        </span>
       </Link>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <span className="text-xs font-semibold uppercase tracking-wide text-ocean">
-          {dict.categories[tour.category]}
-        </span>
-
         <Heading className={cn('font-display leading-snug', featured ? 'text-2xl' : 'text-lg')}>
           <Link href={href} className="hover:underline">
             {copy.title}
@@ -84,28 +90,14 @@ export function TourCard({
           {copy.tagline}
         </p>
 
-        {tour.priceFromBRL !== null ? (
-          <p className="text-sm font-semibold">
-            {dict.tours.from} R$ {tour.priceFromBRL}
-          </p>
-        ) : (
-          <p className="text-sm text-ink-soft">{dict.tours.priceOnRequest}</p>
-        )}
+        <p className="text-sm font-semibold text-ink">{priceLine}</p>
 
-        <div className="mt-1 flex flex-col gap-2 sm:flex-row">
-          <Link
-            href={href}
-            className="inline-flex flex-1 items-center justify-center rounded-card border border-ink px-4 py-2 text-sm font-semibold transition-colors hover:bg-ink hover:text-sand"
-          >
-            {dict.cta.viewTour}
-          </Link>
-          <WhatsAppButton
-            variant="card"
-            label={dict.cta.bookOnWhatsapp}
-            message={copy.whatsappMessage}
-            className="flex-1"
-          />
-        </div>
+        <WhatsAppButton
+          variant="card"
+          label={dict.cta.bookOnWhatsapp}
+          message={copy.whatsappMessage}
+          className="mt-1"
+        />
       </div>
     </article>
   )

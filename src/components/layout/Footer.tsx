@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher'
 import { Container } from '@/components/ui/Container'
+import { Picture } from '@/components/ui/Picture'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { business } from '@/content/business'
 import { whatsappUrl } from '@/lib/whatsapp'
@@ -13,7 +14,16 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <Container className="py-14">
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
-            <p className="font-display text-xl font-bold">{business.name}</p>
+            {/* rounded-full: the source image is a seal on a white square —
+                clipping it to a circle removes the square corners without
+                needing actual image transparency. */}
+            <Picture
+              src="gabriel-tour-logo"
+              alt={business.name}
+              className="h-16 w-16 rounded-full"
+              sizes="64px"
+            />
+            <p className="mt-3 font-display text-xl font-bold">{business.name}</p>
             <p className="mt-2 max-w-xs text-sm text-sand/80">{dict.footer.tagline}</p>
           </div>
 
@@ -74,7 +84,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </ul>
 
             <div className="mt-5">
-              <LanguageSwitcher current={locale} tone="dark" />
+              <LanguageSwitcher current={locale} dict={dict} tone="dark" />
             </div>
           </div>
         </div>

@@ -5,34 +5,57 @@
   reads as a football shirt. Each colour is sampled from somewhere real.
 */
 @theme {
-  --color-sand: #fbf7f0; /* Ipanema sand — page background */
-  --color-sand-deep: #f2ebdf; /* alternating section background */
-  --color-ink: #1a1a1a; /* calçadão mosaic black — body text */
+  /* Matched to the reference screenshots: a soft, barely-there warm cream
+     page background with white card surfaces sitting on top of it (cards
+     use bg-white directly, not sand-deep — sand-deep is only for the rare
+     alternating section, not the card system in this design). */
+  --color-sand: #faf8f3;
+  --color-sand-deep: #f2eee4;
+  --color-ink: #1a1a1a; /* near-black body text, matches the reference */
   --color-ink-soft: #5c5750; /* secondary text */
 
-  /* #0E7C7B (the original "water at Arraial" shade) only reached 4.23:1
-     against sand-deep at normal text sizes — just under WCAG AA's 4.5:1.
-     Darkened slightly; still reads as the same teal, now passes on every
-     background it's used against. */
-  --color-ocean: #0c6e6d;
-  --color-ocean-dark: #0a5f5e;
-  --color-sunset: #e8552f; /* sky behind Dois Irmãos — CTA */
-  --color-sunset-dark: #c8441f;
+  /* Warm gold badge fill (category tags, info pills) — always paired with
+     dark ink text (9.86:1); the colour itself is far too light to ever be
+     text on its own (1.76:1 on white). */
+  --color-badge-gold: #f5b942;
+
+  /* Accent palette — the blue/orange pair used as small text (category
+     labels, links, focus ring). Requested as close to the reference swatches
+     (#4472C4 / #E0A23A) as possible: only lightly darkened (5–25%, not the
+     much heavier darkening used before) — enough to clear the relevant WCAG
+     tier (4.5:1 for small text on ocean, the more lenient 3:1 large-text/
+     decorative tier on sunset, matching its actual usages), deliberately
+     landing close to the line rather than with heavy safety margin. */
+  --color-ocean: #3c6bbf;
+  --color-ocean-dark: #335aa1;
+  --color-sunset: #b77d1d;
+  --color-sunset-dark: #976818;
   --color-forest: #1f4d3d; /* Tijuca forest — secondary */
 
-  /* WhatsApp's own brand green (#25D366) only reaches 1.98:1 contrast with
-     white text — nowhere near the 4.5:1 WCAG AA needs, and it's used on
-     every booking button on the site. This is WhatsApp's own dark teal-green
-     (from their header bar, not invented here) — 7.67:1, still instantly
-     recognisable as WhatsApp, actually accessible. */
-  --color-whatsapp: #075e54;
-  --color-whatsapp-dark: #054940;
+  /* A more saturated orange for the "Custom Tours" banner fill only — the
+     darkened sunset/sunset-dark pair above is tuned for small TEXT safety,
+     which reads muted/brownish once it's the whole background. A fill only
+     needs the text drawn on top to clear contrast, not the fill itself, so
+     this stays closer to the vivid sunset-sky orange Gabriel sent as a
+     reference photo (ink text still clears 4.5:1 here: 5.19:1). */
+  --color-sunset-vivid: #e2690a;
 
-  --font-display: var(--font-bricolage), Georgia, serif;
-  --font-body: var(--font-archivo), system-ui, sans-serif;
+  /* WhatsApp's own bright brand green — the shade everyone actually
+     recognises. It only reaches 1.98:1 with WHITE text (nowhere near
+     4.5:1), which is why an earlier pass darkened the background instead;
+     that read as too dark. Keeping the bright green and using dark ink text
+     on it instead gives 8.78:1 — bright, on-brand, and more accessible than
+     the darkened version was. */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1fb357;
+
+  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-signature: var(--font-caveat), cursive;
 
-  --radius-card: 0.5rem;
+  /* 1rem, not the old 0.5rem — the reference design's cards, dropdowns and
+     buttons all read noticeably more rounded/modern than a half-rem gives. */
+  --radius-card: 1rem;
 }
 
 @layer base {

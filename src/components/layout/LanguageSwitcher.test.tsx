@@ -1,68 +1,124 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher'
+import { LOCALES } from '@/lib/i18n'
+import en from '@/dictionaries/en.json'
 
 vi.mock('next/navigation', () => ({
   usePathname: () => '/en/tours/christ-the-redeemer-tour/',
 }))
 
 describe('LanguageSwitcher', () => {
-  // next/link normalises away a single trailing slash when rendered outside a
-  // full Next.js router context (as here, under jsdom) — confirmed in isolation
-  // and unrelated to this component. The real static export (trailingSlash:
-  // true) was already verified to produce correct /locale/path/ URLs in the
-  // Fas 1–2 builds, so these assertions match what next/link actually renders
-  // in a unit test rather than re-asserting Next's own behaviour.
-  it('only swaps the locale segment, keeping the rest of the path', () => {
-    render(<LanguageSwitcher current="en" />)
+  it('shows the current locale code on a closed trigger, options hidden', () => {
+    render(<LanguageSwitcher current="en" dict={en} />)
 
-    expect(screen.getByRole('link', { name: 'PT — Português' })).toHaveAttribute(
+    const trigger = screen.getByRole('button')
+    expect(trigger).toHaveTextContent('en')
+    expect(trigger).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.queryByRole('link')).not.toBeInTheDocument()
+  })
+
+  it('opens on click and shows all four languages by name', async () => {
+    const user = userEvent.setup()
+    render(<LanguageSwitcher current="en" dict={en} />)
+
+    await user.click(screen.getByRole('button'))
+
+    expect(screen.getByRole('button')).toHaveAttribute('aria-expanded', 'true')
+    for (const name of ['English', 'Français', 'Español', 'Português']) {
+      expect(screen.getByRole('link', { name })).toBeInTheDocument()
+    }
+  })
+
+  // next/link drops a single trailing slash when rendered outside a full
+  // Next.js router context (as here, under jsdom) — confirmed in Fas 3. The
+  // real static export (trailingSlash: true) was already verified correct.
+  it('only swaps the locale segment, keeping the rest of the path', async () => {
+    const user = userEvent.setup()
+    render(<LanguageSwitcher current="en" dict={en} />)
+    await user.click(screen.getByRole('button'))
+
+    expect(screen.getByRole('link', { name: 'Português' })).toHaveAttribute(
       'href',
       '/pt/tours/christ-the-redeemer-tour',
     )
-    expect(screen.getByRole('link', { name: 'ES — Español' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Español' })).toHaveAttribute(
       'href',
       '/es/tours/christ-the-redeemer-tour',
     )
   })
 
-  it('marks the current language, and only the current language', () => {
-    render(<LanguageSwitcher current="fr" />)
+  it('marks the current language, and only the current language', async () => {
+    const user = userEvent.setup()
+    render(<LanguageSwitcher current="fr" dict={en} />)
+    await user.click(screen.getByRole('button'))
 
-    expect(screen.getByRole('link', { name: 'FR — Français' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Français' })).toHaveAttribute(
       'aria-current',
       'true',
     )
-    expect(screen.getByRole('link', { name: 'EN — English' })).not.toHaveAttribute('aria-current')
+    expect(screen.getByRole('link', { name: 'English' })).not.toHaveAttribute('aria-current')
   })
 
-  it('renders all four locales', () => {
-    render(<LanguageSwitcher current="en" />)
-    expect(screen.getAllByRole('link')).toHaveLength(4)
+  it('closes when an option is chosen', async () => {
+    const user = userEvent.setup()
+    render(<LanguageSwitcher current="en" dict={en} />)
+    await user.click(screen.getByRole('button'))
+    await user.click(screen.getByRole('link', { name: 'Français' }))
+
+    expect(screen.getByRole('button')).toHaveAttribute('aria-expanded', 'false')
   })
 
-  it('every accessible name starts with the visible code — WCAG 2.5.3 Label in Name', () => {
-    render(<LanguageSwitcher current="en" />)
-    for (const link of screen.getAllByRole('link')) {
-      const visibleText = link.textContent?.toUpperCase() ?? ''
-      expect(link.getAttribute('aria-label')?.startsWith(visibleText)).toBe(true)
+  it('closes on Escape', async () => {
+    const user = userEvent.setup()
+    render(<LanguageSwitcher current="en" dict={en} />)
+    await user.click(screen.getByRole('button'))
+    expect(screen.getByRole('button')).toHaveAttribute('aria-expanded', 'true')
+
+    await user.keyboard('{Escape}')
+    expect(screen.getByRole('button')).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  it('closes when clicking outside', async () => {
+    const user = userEvent.setup()
+    render(
+      <div>
+        <LanguageSwitcher current="en" dict={en} />
+        <button type="button">outside</button>
+      </div>,
+    )
+    await user.click(screen.getByRole('button', { name: /language/i }))
+    await user.click(screen.getByRole('button', { name: 'outside' }))
+
+    expect(screen.getByRole('button', { name: /language/i })).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    )
+  })
+
+  // Regression test: "Português" doesn't start with "Pt", so building the
+  // label from the language name alone breaks WCAG 2.5.3 for exactly one
+  // locale — the same bug fixed in Fas 5 for the old row-of-links version.
+  // Checked for every locale so this can't quietly regress for a language
+  // whose name happens not to start with its own code.
+  it('the trigger label starts with the visible code, for every locale', () => {
+    for (const locale of LOCALES) {
+      render(<LanguageSwitcher current={locale} dict={en} />)
+      const trigger = screen.getAllByRole('button').at(-1)!
+      const label = trigger.getAttribute('aria-label') ?? ''
+      expect(label.toUpperCase().startsWith(locale.toUpperCase())).toBe(true)
     }
   })
 
-  // Regression test for a real bug: text-ink-soft (the default inactive
-  // colour, built for the light header background) is nearly invisible on
-  // the footer's dark bg-forest — 1.34:1 contrast, caught by Lighthouse.
-  it('tone="dark" swaps inactive links away from text-ink-soft', () => {
-    render(<LanguageSwitcher current="en" tone="dark" />)
-    const inactive = screen.getByRole('link', { name: 'FR — Français' })
-    expect(inactive.className).not.toContain('text-ink-soft')
-    expect(inactive.className).toContain('text-sand/70')
+  it('tone="dark" styles the trigger for the footer’s dark background', () => {
+    render(<LanguageSwitcher current="en" dict={en} tone="dark" />)
+    expect(screen.getByRole('button').className).toContain('text-sand/70')
   })
 
-  it('defaults to the light tone (text-ink-soft) when tone is not given', () => {
-    render(<LanguageSwitcher current="en" />)
-    const inactive = screen.getByRole('link', { name: 'FR — Français' })
-    expect(inactive.className).toContain('text-ink-soft')
+  it('defaults to the light tone', () => {
+    render(<LanguageSwitcher current="en" dict={en} />)
+    expect(screen.getByRole('button').className).toContain('text-ink-soft')
   })
 })

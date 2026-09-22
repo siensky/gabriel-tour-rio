@@ -1,0 +1,20 @@
+# Security headers for every response. Supported natively by Cloudflare
+# Workers static assets (same file/format Cloudflare Pages used) — no Worker
+# script needed, this is parsed and applied automatically at the edge.
+#
+# script-src needs 'unsafe-inline': Next's static export embeds its React
+# hydration payload as inline <script>self.__next_f.push(...)</script> tags
+# directly in the HTML (different content per page, so a hash-based CSP
+# isn't practical with one shared _headers file). Without it the site loads
+# but never hydrates — the mobile menu, language dropdown and category
+# filter all silently stop working. This site has no forms, no database and
+# renders no user-supplied input, so there is no realistic injection point
+# for this to expose — the rest of the policy still blocks any unexpected
+# third-party script/style/frame source.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'

@@ -1,4 +1,4 @@
-import { Bricolage_Grotesque, Archivo, Caveat } from 'next/font/google'
+import { Inter, Caveat } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import type { ReactNode } from 'react'
 
@@ -13,21 +13,16 @@ import { buildTravelAgencySchema, buildWebSiteSchema } from '@/lib/seo'
 
 /*
   Self-hosted at build time by next/font — no request to Google, no layout
-  shift. Bricolage Grotesque for headings (distinctive, a bit odd, not the
-  default-looking sans every AI-built site ships with); Archivo for body text.
-  Caveat is a genuine handwriting face, used only for Gabriel's sign-off — a
-  detail no AI-generated template site bothers with (see the plan's
-  "Personliga detaljer som inte går att generera").
+  shift. Inter for both headings and body — one clean, modern typeface
+  throughout rather than pairing two families, closer to how iOS itself
+  uses a single system face (SF Pro) everywhere and varies weight/size
+  instead. Caveat is a genuine handwriting face, used only for Gabriel's
+  sign-off — a detail no AI-generated template site bothers with (see the
+  plan's "Personliga detaljer som inte går att generera").
 */
-const display = Bricolage_Grotesque({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-bricolage',
-  display: 'swap',
-})
-
-const body = Archivo({
-  subsets: ['latin'],
-  variable: '--font-archivo',
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -56,7 +51,7 @@ export default async function LocaleLayout({
   const dict = await getDictionary(locale)
 
   return (
-    <html lang={locale} className={`${display.variable} ${body.variable} ${signature.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${signature.variable}`}>
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"

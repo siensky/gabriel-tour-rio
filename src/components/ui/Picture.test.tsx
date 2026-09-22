@@ -104,4 +104,26 @@ describe('Picture — a real photo exists in the manifest', () => {
     expect(img).toHaveAttribute('loading', 'lazy')
     expect(img).not.toHaveAttribute('fetchpriority')
   })
+
+  // Regression test for a real bug: the <img> used to carry a hardcoded
+  // 'h-full w-full' base class. Tailwind utility conflicts aren't resolved
+  // by string order, so appending a fixed 'h-16 w-16' via `className` didn't
+  // reliably win — a logo meant to render at 64px rendered at ~300px+ in
+  // the footer instead. There must be no competing size utility baked in.
+  it('carries no hardcoded h-*/w-* class that could fight a caller’s own sizing', () => {
+    render(
+      <Picture
+        src="christ-the-redeemer-hero"
+        alt="Christ the Redeemer"
+        manifest={sampleManifest}
+        className="h-16 w-16 rounded-full"
+      />,
+    )
+    const img = screen.getByRole('img', { name: 'Christ the Redeemer' })
+    expect(img.className.split(' ')).toEqual(
+      expect.arrayContaining(['h-16', 'w-16', 'rounded-full', 'object-cover']),
+    )
+    expect(img.className).not.toMatch(/\bh-full\b/)
+    expect(img.className).not.toMatch(/\bw-full\b/)
+  })
 })

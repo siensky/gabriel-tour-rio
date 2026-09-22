@@ -1,1 +1,122 @@
-{}
+{
+  "gabriel-portrait": {
+    "width": 684,
+    "height": 958,
+    "formats": {
+      "avif": [
+        {
+          "width": 480,
+          "path": "img/gabriel-portrait-480.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "path": "img/gabriel-portrait-480.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "path": "img/gabriel-portrait-480.jpg"
+        }
+      ]
+    }
+  },
+  "gabriel-tour-logo": {
+    "width": 1600,
+    "height": 1600,
+    "formats": {
+      "avif": [
+        {
+          "width": 480,
+          "path": "img/gabriel-tour-logo-480.avif"
+        },
+        {
+          "width": 960,
+          "path": "img/gabriel-tour-logo-960.avif"
+        },
+        {
+          "width": 1600,
+          "path": "img/gabriel-tour-logo-1600.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "path": "img/gabriel-tour-logo-480.webp"
+        },
+        {
+          "width": 960,
+          "path": "img/gabriel-tour-logo-960.webp"
+        },
+        {
+          "width": 1600,
+          "path": "img/gabriel-tour-logo-1600.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "path": "img/gabriel-tour-logo-480.jpg"
+        },
+        {
+          "width": 960,
+          "path": "img/gabriel-tour-logo-960.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "img/gabriel-tour-logo-1600.jpg"
+        }
+      ]
+    }
+  },
+  "rio-sunset-hero": {
+    "width": 1920,
+    "height": 1088,
+    "formats": {
+      "avif": [
+        {
+          "width": 480,
+          "path": "img/rio-sunset-hero-480.avif"
+        },
+        {
+          "width": 960,
+          "path": "img/rio-sunset-hero-960.avif"
+        },
+        {
+          "width": 1600,
+          "path": "img/rio-sunset-hero-1600.avif"
+        }
+      ],
+      "webp": [
+        {
+          "width": 480,
+          "path": "img/rio-sunset-hero-480.webp"
+        },
+        {
+          "width": 960,
+          "path": "img/rio-sunset-hero-960.webp"
+        },
+        {
+          "width": 1600,
+          "path": "img/rio-sunset-hero-1600.webp"
+        }
+      ],
+      "jpg": [
+        {
+          "width": 480,
+          "path": "img/rio-sunset-hero-480.jpg"
+        },
+        {
+          "width": 960,
+          "path": "img/rio-sunset-hero-960.jpg"
+        },
+        {
+          "width": 1600,
+          "path": "img/rio-sunset-hero-1600.jpg"
+        }
+      ]
+    }
+  }
+}

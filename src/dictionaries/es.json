@@ -8,7 +8,8 @@
     "menu": "Menú",
     "close": "Cerrar",
     "language": "Idioma",
-    "skipToContent": "Ir al contenido"
+    "skipToContent": "Ir al contenido",
+    "customTours": "Tours a medida"
   },
   "cta": {
     "bookOnWhatsapp": "Reservar por WhatsApp",
@@ -19,12 +20,17 @@
     "readMoreAboutGabriel": "Saber más sobre Gabriel"
   },
   "home": {
-    "heroTitle": "Tours privados y personalizados con un guía local en Río de Janeiro",
-    "heroSubtitle": "Sin megáfonos, sin grupos con chalecos iguales. Solo yo enseñándote mi ciudad como se la enseñaría a un amigo.",
-    "toursTitle": "Elige tu Río",
+    "heroTitle": "Tu guía local en Río de Janeiro",
+    "heroSubtitle": "Tours privados y personalizados: playas, barcos, favelas, vida nocturna — con un local de Río que conoce cada rincón.",
+    "heroImageAlt": "Estatua del Cristo Redentor sobre Río de Janeiro al atardecer, con el Pan de Azúcar y la bahía de Guanabara al fondo",
+    "toursTitle": "Explora los tours",
     "toursSubtitle": "Cada tour se arma en torno a lo que quieres ver. Cuéntame qué te interesa y lo planeamos juntos.",
     "howItWorksTitle": "Cómo funciona",
-    "reviewsTitle": "Lo que dicen los viajeros"
+    "reviewsTitle": "Lo que dicen los viajeros",
+    "customToursEyebrow": "Tours a medida",
+    "customToursTitle": "¿No encuentras exactamente lo que buscas?",
+    "customToursSubtitle": "Cualquier tour de aquí se puede adaptar, o podemos armar un día entero según lo que realmente quieras ver. Escríbeme y cuéntame qué tienes en mente.",
+    "customToursCta": "Armar mi tour"
   },
   "howItWorks": {
     "step1Title": "Escríbeme",
@@ -73,7 +79,8 @@
   },
   "whatsapp": {
     "general": "¡Hola Gabriel! Encontré tu web y me gustaría saber más sobre tus tours en Río.",
-    "tour": "¡Hola Gabriel! Me interesa el tour {tour}. ¿Me puedes contar sobre disponibilidad y precio?"
+    "tour": "¡Hola Gabriel! Me interesa el tour {tour}. ¿Me puedes contar sobre disponibilidad y precio?",
+    "customTour": "¡Hola Gabriel! Me gustaría armar un tour a medida — ¿podemos hablarlo?"
   },
   "meta": {
     "home": {

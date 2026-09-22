@@ -8,7 +8,8 @@
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "customTours": "Custom Tours"
   },
   "cta": {
     "bookOnWhatsapp": "Book on WhatsApp",
@@ -19,12 +20,17 @@
     "readMoreAboutGabriel": "Read more about Gabriel"
   },
   "home": {
-    "heroTitle": "Private personalised tours with a local guide in Rio de Janeiro",
-    "heroSubtitle": "No megaphones, no groups in matching vests. Just me showing you my city the way I'd show a friend.",
-    "toursTitle": "Choose your Rio",
+    "heroTitle": "Your local tour guide in Rio de Janeiro",
+    "heroSubtitle": "Private, personalised tours: beaches, boats, favelas, nightlife — hosted by a Rio local who knows every corner.",
+    "heroImageAlt": "Christ the Redeemer statue overlooking Rio de Janeiro at sunset, with Sugarloaf Mountain and Guanabara Bay in the background",
+    "toursTitle": "Browse the tours",
     "toursSubtitle": "Every tour is built around what you want to see. Tell me what you're curious about and we'll plan it together.",
     "howItWorksTitle": "How it works",
-    "reviewsTitle": "What guests say"
+    "reviewsTitle": "What guests say",
+    "customToursEyebrow": "Custom tours",
+    "customToursTitle": "Don't see exactly what you're after?",
+    "customToursSubtitle": "Every tour here can be adapted, or we can build a day around what you actually want to see. Just message me and tell me what you have in mind.",
+    "customToursCta": "Plan my tour"
   },
   "howItWorks": {
     "step1Title": "Message me",
@@ -73,7 +79,8 @@
   },
   "whatsapp": {
     "general": "Hi Gabriel! I found your website and I would like to know more about your tours in Rio.",
-    "tour": "Hi Gabriel! I am interested in the {tour} tour. Could you tell me about availability and price?"
+    "tour": "Hi Gabriel! I am interested in the {tour} tour. Could you tell me about availability and price?",
+    "customTour": "Hi Gabriel! I'd like to put together a custom tour — could we chat about what's possible?"
   },
   "meta": {
     "home": {

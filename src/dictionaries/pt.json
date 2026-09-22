@@ -8,7 +8,8 @@
     "menu": "Menu",
     "close": "Fechar",
     "language": "Idioma",
-    "skipToContent": "Ir para o conteúdo"
+    "skipToContent": "Ir para o conteúdo",
+    "customTours": "Passeios sob medida"
   },
   "cta": {
     "bookOnWhatsapp": "Reservar pelo WhatsApp",
@@ -19,12 +20,17 @@
     "readMoreAboutGabriel": "Saiba mais sobre o Gabriel"
   },
   "home": {
-    "heroTitle": "Passeios privativos e personalizados com um guia local no Rio de Janeiro",
-    "heroSubtitle": "Sem megafone, sem grupo de colete igual. Só eu te mostrando a minha cidade do jeito que eu mostraria a um amigo.",
-    "toursTitle": "Escolha o seu Rio",
+    "heroTitle": "Seu guia local no Rio de Janeiro",
+    "heroSubtitle": "Passeios privativos e personalizados: praias, barcos, favelas, vida noturna — com um carioca que conhece cada cantinho.",
+    "heroImageAlt": "Estátua do Cristo Redentor sobre o Rio de Janeiro ao pôr do sol, com o Pão de Açúcar e a Baía de Guanabara ao fundo",
+    "toursTitle": "Veja os passeios",
     "toursSubtitle": "Cada passeio é montado em volta do que você quer ver. Me conta o que te interessa e a gente planeja junto.",
     "howItWorksTitle": "Como funciona",
-    "reviewsTitle": "O que dizem os visitantes"
+    "reviewsTitle": "O que dizem os visitantes",
+    "customToursEyebrow": "Passeios sob medida",
+    "customToursTitle": "Não achou exatamente o que procurava?",
+    "customToursSubtitle": "Qualquer passeio daqui pode ser adaptado, ou a gente monta um dia inteiro em volta do que você realmente quer ver. Me manda mensagem e conta o que você tem em mente.",
+    "customToursCta": "Montar meu passeio"
   },
   "howItWorks": {
     "step1Title": "Me manda mensagem",
@@ -73,7 +79,8 @@
   },
   "whatsapp": {
     "general": "Oi Gabriel! Encontrei seu site e queria saber mais sobre os seus passeios no Rio.",
-    "tour": "Oi Gabriel! Tenho interesse no passeio {tour}. Pode me falar sobre disponibilidade e preço?"
+    "tour": "Oi Gabriel! Tenho interesse no passeio {tour}. Pode me falar sobre disponibilidade e preço?",
+    "customTour": "Oi Gabriel! Eu queria montar um passeio sob medida — a gente pode conversar sobre isso?"
   },
   "meta": {
     "home": {

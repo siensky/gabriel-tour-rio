@@ -9,9 +9,15 @@ import { cn } from '@/lib/utils'
 export function PlaceholderImage({
   label,
   className,
+  showLabel = true,
 }: {
   label: string
   className?: string
+  /** False when used as a full-bleed background behind real overlaid
+   *  heading text (the homepage hero) — the centred caption would otherwise
+   *  sit right on top of that text. The box stays announced via aria-label
+   *  either way; only the redundant visible caption is skipped. */
+  showLabel?: boolean
 }) {
   return (
     <div
@@ -22,7 +28,9 @@ export function PlaceholderImage({
         className,
       )}
     >
-      <span className="font-display text-lg font-semibold text-sand/90">{label}</span>
+      {showLabel && (
+        <span className="font-display text-lg font-semibold text-sand/90">{label}</span>
+      )}
     </div>
   )
 }

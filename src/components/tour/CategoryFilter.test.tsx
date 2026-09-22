@@ -47,4 +47,41 @@ describe('CategoryFilter', () => {
     await user.click(cityButton)
     expect(cityButton).toHaveAttribute('aria-pressed', 'true')
   })
+
+  it('gives the active button the green fill and inactive buttons the neutral one', async () => {
+    const user = userEvent.setup()
+    render(
+      <CategoryFilter tours={fixtureTours} categories={['city', 'water']} locale="en" dict={en} />,
+    )
+
+    const cityButton = screen.getByRole('button', { name: en.categories.city })
+    expect(cityButton.className).toContain('bg-sand-deep')
+
+    await user.click(cityButton)
+    expect(cityButton.className).toContain('bg-whatsapp')
+  })
+
+  it('defaults tour card headings to h2 — /tours has no heading above them', () => {
+    render(
+      <CategoryFilter tours={fixtureTours} categories={['city', 'water']} locale="en" dict={en} />,
+    )
+    expect(
+      screen.getByRole('heading', { level: 2, name: fixtureTours[0].i18n.en!.title }),
+    ).toBeInTheDocument()
+  })
+
+  it('accepts h3 — the homepage nests this under its own "Choose your Rio" h2', () => {
+    render(
+      <CategoryFilter
+        tours={fixtureTours}
+        categories={['city', 'water']}
+        locale="en"
+        dict={en}
+        headingLevel="h3"
+      />,
+    )
+    expect(
+      screen.getByRole('heading', { level: 3, name: fixtureTours[0].i18n.en!.title }),
+    ).toBeInTheDocument()
+  })
 })

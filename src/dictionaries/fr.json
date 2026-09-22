@@ -8,7 +8,8 @@
     "menu": "Menu",
     "close": "Fermer",
     "language": "Langue",
-    "skipToContent": "Aller au contenu"
+    "skipToContent": "Aller au contenu",
+    "customTours": "Visites sur mesure"
   },
   "cta": {
     "bookOnWhatsapp": "Réserver sur WhatsApp",
@@ -19,12 +20,17 @@
     "readMoreAboutGabriel": "En savoir plus sur Gabriel"
   },
   "home": {
-    "heroTitle": "Visites privées et personnalisées avec un guide local à Rio de Janeiro",
-    "heroSubtitle": "Pas de mégaphone, pas de groupe en gilets assortis. Juste moi qui vous montre ma ville comme je la montrerais à un ami.",
-    "toursTitle": "Choisissez votre Rio",
+    "heroTitle": "Votre guide local à Rio de Janeiro",
+    "heroSubtitle": "Visites privées et personnalisées : plages, bateaux, favelas, vie nocturne — avec un habitant de Rio qui connaît chaque recoin.",
+    "heroImageAlt": "Statue du Christ Rédempteur surplombant Rio de Janeiro au coucher du soleil, avec le Pain de Sucre et la baie de Guanabara en arrière-plan",
+    "toursTitle": "Parcourir les visites",
     "toursSubtitle": "Chaque visite se construit autour de ce que vous voulez voir. Dites-moi ce qui vous attire et on la prépare ensemble.",
     "howItWorksTitle": "Comment ça marche",
-    "reviewsTitle": "Ce que disent les voyageurs"
+    "reviewsTitle": "Ce que disent les voyageurs",
+    "customToursEyebrow": "Visites sur mesure",
+    "customToursTitle": "Vous ne trouvez pas exactement ce que vous cherchez ?",
+    "customToursSubtitle": "Chaque visite ici peut être adaptée, ou on peut construire une journée entière autour de ce que vous voulez vraiment voir. Écrivez-moi et dites-moi ce que vous avez en tête.",
+    "customToursCta": "Créer ma visite"
   },
   "howItWorks": {
     "step1Title": "Écrivez-moi",
@@ -73,7 +79,8 @@
   },
   "whatsapp": {
     "general": "Bonjour Gabriel ! J’ai trouvé votre site et j’aimerais en savoir plus sur vos visites à Rio.",
-    "tour": "Bonjour Gabriel ! La visite {tour} m’intéresse. Pourriez-vous me parler des disponibilités et du prix ?"
+    "tour": "Bonjour Gabriel ! La visite {tour} m’intéresse. Pourriez-vous me parler des disponibilités et du prix ?",
+    "customTour": "Bonjour Gabriel ! J’aimerais organiser une visite sur mesure — on peut en discuter ?"
   },
   "meta": {
     "home": {

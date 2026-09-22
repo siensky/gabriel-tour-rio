@@ -67,7 +67,11 @@ export function Picture({
         width={entry.width}
         height={entry.height}
         alt={alt}
-        className={cn('h-full w-full object-cover', className)}
+        // object-cover only — no hardcoded h-full/w-full. Tailwind utility
+        // conflicts aren't resolved by string order (h-16 appended after
+        // h-full doesn't reliably win), so a caller's own sizing classes
+        // must be the only source of size, never fighting a baked-in default.
+        className={cn('object-cover', className)}
         loading={priority ? undefined : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
         decoding="async"
